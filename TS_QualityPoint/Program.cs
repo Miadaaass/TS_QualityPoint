@@ -1,8 +1,8 @@
 using TS_QualityPoint.Middleware;
-using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 using TS_QualityPoint.Options;
 using TS_QualityPoint.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +27,20 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseCors("AllowAll");
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = string.Empty;
+});
+
 app.UseAuthorization();
 app.MapControllers();
 

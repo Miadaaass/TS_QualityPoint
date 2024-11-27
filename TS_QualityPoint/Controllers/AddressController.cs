@@ -1,8 +1,7 @@
-﻿using TS_QualityPoint.Models;
-using TS_QualityPoint.Services;
+﻿using TS_QualityPoint.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TS_QualityPoint.Services;
+using TS_QualityPoint.Models;
 
 namespace TS_QualityPoint.Controllers
 {

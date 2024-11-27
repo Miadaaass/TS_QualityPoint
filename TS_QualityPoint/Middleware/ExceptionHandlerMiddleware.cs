@@ -23,7 +23,6 @@ namespace TS_QualityPoint.Middleware
             catch (Exception ex)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                // Можно добавить логирование ошибки здесь
                 await context.Response.WriteAsync("Произошла непредвиденная ошибка. Пожалуйста, повторите попытку позже.");
             }
         }
