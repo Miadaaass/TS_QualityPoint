@@ -1,7 +1,7 @@
-﻿using TS_QualityPoint.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TS_QualityPoint.Models;
+using TS_QualityPoint.Services;
 
 namespace TS_QualityPoint.Controllers
 {
@@ -22,10 +22,9 @@ namespace TS_QualityPoint.Controllers
             var result = await _addressService.StandardizeAddressAsync(address);
             if (result == null)
             {
-                return NotFound();
+                return NotFound(); // Возвращаем 404, если адрес не найден
             }
             return Ok(result);
         }
     }
 }
-
